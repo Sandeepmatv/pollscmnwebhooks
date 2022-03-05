@@ -13,9 +13,14 @@ pipeline{
   }
   
   stages {
-    stage('Declarative checkout') {
+    stage('stage 1') {
       steps {
-        checkout scm
+        sh 'echo stage1'
+      }
+    }
+    stage('stage 2') {
+      steps {
+        sh 'echo stage2'
       }
     }
     stage('print file on screen'){
