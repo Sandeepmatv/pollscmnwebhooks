@@ -1,5 +1,17 @@
-pipeline {
+pipeline{
+  
   agent any 
+  
+  options{
+    buildDiscarder(logRotator(numToKeepStr: '2'))
+    disableConcurrentBuilds()
+    
+  }
+  
+  triggers {
+    pollSCM('* * * * *')
+  }
+  
   stages {
     stage('Declarative checkout') {
       steps {
@@ -8,4 +20,8 @@ pipeline {
     }
     stage('print file on screen'){
       steps{
-        sh 'cat abc.
+        sh 'cat ci.txt'
+      }
+    }
+  }
+}
